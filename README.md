@@ -40,8 +40,8 @@ Different datsets we explored：
 
 ACG rejection sampler version
 
-| Dataset | Laplace | Gaussian | KT | ITU | Alg1 |
-| --- | ---: | ---: | ---: | ---: | ---: |
+| Dataset | Laplace | Gaussian | KT | ITU | Alg1 | Trace | Tail | 
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Wine | 0.03s | 0.06s | 2.72s | 2.17s | 2.19s |
 | Airfoil | 0.03s | 0.05s | 0.98s | 0.83s | 0.83s |
 | Adult | 4.96s | 12.48s | 303.65s | 135.82s | 131.32s |
@@ -52,8 +52,8 @@ ACG rejection sampler version
 
 Simple version
 
-| Dataset | Laplace | Gaussian | KT | ITU | Alg1 |
-| --- | ---: | ---: | ---: | ---: | ---: |
+| Dataset | Laplace | Gaussian | KT | ITU | Alg1 | Trace | Tail | 
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Wine | 0.04s | 0.06s | 1.04s | 0.70s | 0.70s |
 | Airfoil | 0.03s | 0.05s | 0.30s | 0.24s | 0.23s |
 | Adult | 4.55s | 12.24s | 192.94s | 85.92s | 85.09s |
