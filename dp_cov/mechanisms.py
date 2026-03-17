@@ -387,9 +387,8 @@ def SeparateCov_2022(X_torch, n, d, rho, r=1.0, b_fleig=True):
     return torch.mm(Ug, torch.mm(torch.diag(D_tilde), Ug.t()))
 
 
-def dp_trace_algo_2022(X_dn, epsilon, delta, k, rng=None):
-    """2022 Trace-Sensitive algorithm wrapper (GaussCov_2022).
-
+def dp_gaussCov_algo_2022(X_dn, epsilon, delta, k, rng=None):
+    """
     Converts (ε, δ)-DP to ρ-zCDP, applies GaussCov_2022, and rescales
     the output back to the XX^T scale used by the rest of the experiments.
 
@@ -403,8 +402,8 @@ def dp_trace_algo_2022(X_dn, epsilon, delta, k, rng=None):
     return cov_tilde.detach().numpy() * n          # rescale to XX^T format
 
 
-def dp_tail_algo_2022(X_dn, epsilon, delta, k, rng=None):
-    """2022 Tail-Sensitive algorithm wrapper (SeparateCov_2022).
+def dp_trace_algo_2022(X_dn, epsilon, delta, k, rng=None):
+    """2022 Trace-Sensitive algorithm wrapper (SeparateCov_2022).
 
     Converts (ε, δ)-DP to ρ-zCDP, applies SeparateCov_2022, and rescales
     the output back to the XX^T scale used by the rest of the experiments.
