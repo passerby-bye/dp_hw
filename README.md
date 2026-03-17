@@ -14,8 +14,8 @@ For the eigenvector-sampling step inside `KT` and `Algorithm 1`, the repository 
 
 In addition to the baselines from the original paper (Laplace, Gaussian, KT), we also implement two mechanisms from the 2022 follow-up work, which approach the problem via zero-Concentrated DP (zCDP):
 
-- **Trace-Sensitive (`dp_trace_algo_2022`)**: Applies a Gaussian (Wigner-style) noise matrix directly to the empirical covariance $\frac{1}{n}X^TX$.
-- **Tail-Sensitive (`dp_tail_algo_2022`)**: Splits the privacy budget $\rho$ equally between two steps: (1) estimate eigenvector directions using the Trace-Sensitive mechanism with budget $\rho/2$; (2) independently estimate eigenvalues along those directions with the remaining $\rho/2$. This separation reduces error when the covariance spectrum decays quickly.
+- **GaussCov (`dp_gauss_algo_2022`)**: Applies a Gaussian (Wigner-style) noise matrix directly to the empirical covariance $\frac{1}{n}X^TX$.
+- **Trace-Sensitive (`dp_trace_algo_2022`)**: Splits the privacy budget $\rho$ equally between two steps: (1) estimate eigenvector directions using the Trace-Sensitive mechanism with budget $\rho/2$; (2) independently estimate eigenvalues along those directions with the remaining $\rho/2$. This separation reduces error when the covariance spectrum decays quickly.
 
 Both mechanisms are implemented in [`dp_cov/mechanisms.py`](dp_cov/mechanisms.py) using PyTorch and are included in the experiment runner alongside the original baselines.
 
@@ -49,7 +49,7 @@ Trace-Sensitive and Tail-Sensitive (2022) use direct Gaussian noise and do not r
 
 ACG rejection sampler version (`--sampler-mode acg`)
 
-| Dataset | Laplace | Gaussian | KT | ITU | Alg1 | Trace 2022 | Tail 2022 |
+| Dataset | Laplace | Gaussian | KT | ITU | Alg1 | GaussCov | Trace 2022 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Wine | 0.03s | 0.06s | 2.72s | 2.17s | 2.19s | 0.42s | 0.40s |
 | Airfoil | 0.03s | 0.05s | 0.98s | 0.83s | 0.83s | 0.15s | 0.15s |
@@ -61,7 +61,7 @@ ACG rejection sampler version (`--sampler-mode acg`)
 
 Simple version (`--sampler-mode simple`)
 
-| Dataset | Laplace | Gaussian | KT | ITU | Alg1 | Trace 2022 | Tail 2022 |
+| Dataset | Laplace | Gaussian | KT | ITU | Alg1 | GaussCov | Trace 2022 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Wine | 0.04s | 0.06s | 1.04s | 0.70s | 0.70s | 0.42s | 0.40s |
 | Airfoil | 0.03s | 0.05s | 0.30s | 0.24s | 0.23s | 0.15s | 0.15s |
