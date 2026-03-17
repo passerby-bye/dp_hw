@@ -1,7 +1,7 @@
 """
 Reproducing: "Differentially Private Covariance Estimation"
 Experiments from Section 4: compare Algorithm 1 vs Laplace / Gaussian / KT baselines
-and 2022 Trace/Tail-Sensitive algorithms on multiple datasets.
+and 2022 GaussCov/Trace-Sensitive algorithms on multiple datasets.
 
 Run:
     python dp_covariance.py [--sampler-mode {simple,acg,auto}]
