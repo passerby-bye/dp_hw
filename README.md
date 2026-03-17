@@ -1,6 +1,6 @@
 # Differentially Private Covariance Estimation Reproduction
 
-This repository reproduces experiments from [Differentially Private Covariance Estimation (NeurIPS 2019)](https://proceedings.neurips.cc/paper/2019/file/4158f6d19559955bae372bb00f6204e4-Paper.pdf) and extends the benchmark with additional datasets and two algorithms from [Differentially Private Covariance Revisited (NeurIPS 2022)](https://proceedings.neurips.cc/paper_files/paper/2022/hash/2a5e2f031a8e1c9d0b5a5b2a8a5b2a5e-Abstract-Conference.html).
+This repository reproduces experiments from [Differentially Private Covariance Estimation (NeurIPS 2019)](https://proceedings.neurips.cc/paper/2019/file/4158f6d19559955bae372bb00f6204e4-Paper.pdf) and extends the benchmark with additional datasets and two algorithms from [Differentially Private Covariance Revisited (NeurIPS 2022)](https://papers.nips.cc/paper_files/paper/2022/file/057405fd73dd7ba7f32a7cb34fb7c7f5-Paper-Conference.pdf).
 
 ## Implementation Notes
 
