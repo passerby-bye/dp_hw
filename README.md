@@ -14,7 +14,7 @@ For the eigenvector-sampling step inside `KT` and `Algorithm 1`, the repository 
 
 In addition to the baselines from the original paper (Laplace, Gaussian, KT), we also implement two mechanisms from the 2022 follow-up work, which approach the problem via zero-Concentrated DP (zCDP):
 
-- **GaussCov (`dp_gauss_algo_2022`)**: Applies a Gaussian (Wigner-style) noise matrix directly to the empirical covariance $\frac{1}{n}X^TX$.
+- **GaussCov (`dp_gaussCov_algo_2022`)**: Applies a Gaussian (Wigner-style) noise matrix directly to the empirical covariance $\frac{1}{n}X^TX$.
 - **Trace-Sensitive (`dp_trace_algo_2022`)**: Splits the privacy budget $\rho$ equally between two steps: (1) estimate eigenvector directions using the Trace-Sensitive mechanism with budget $\rho/2$; (2) independently estimate eigenvalues along those directions with the remaining $\rho/2$. This separation reduces error when the covariance spectrum decays quickly.
 
 Both mechanisms are implemented in [`dp_cov/mechanisms.py`](dp_cov/mechanisms.py) using PyTorch and are included in the experiment runner alongside the original baselines.
