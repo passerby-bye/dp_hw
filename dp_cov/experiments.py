@@ -12,8 +12,8 @@ from .mechanisms import (
     dp_kt,
     dp_algorithm1_uniform,
     dp_algorithm1_rank_k,
+    dp_gaussCov_algo_2022,
     dp_trace_algo_2022,
-    dp_tail_algo_2022,
 )
 
 
@@ -73,10 +73,10 @@ def run_experiment_vary_eps_gaussian_grid(
     results_a = {alg: [] for alg in ["Laplace", "KT", "ITU", "Alg1"]}
     results_b = {f"G-{int(np.log10(delta))}": [] for delta in gaussian_deltas}
     results_b["Alg1"] = []
+    results_b["GaussCov"] = []
     results_b["Trace2022"] = []
-    results_b["Tail2022"] = []
 
-    time_totals = {alg: 0.0 for alg in ["Laplace", "Gaussian", "KT", "ITU", "Alg1", "Trace2022", "Tail2022"]}
+    time_totals = {alg: 0.0 for alg in ["Laplace", "Gaussian", "KT", "ITU", "Alg1", "GaussCov", "Trace2022"]}
     time_counts = {alg: 0 for alg in time_totals}
 
     total_runs = len(epsilons) * n_trials
@@ -131,17 +131,19 @@ def run_experiment_vary_eps_gaussian_grid(
             errs_b["Alg1"].append(frobenius_error(C_true,
                 dp_algorithm1_rank_k(X, epsilon, 1e-5, k, rng=rng), X.shape[1]))
 
+
+            t0 = time.perf_counter()
+            gaussCov_est = dp_gaussCov_algo_2022(X, epsilon, 1e-5, k, rng=rng)
+            time_totals["GaussCov"] += time.perf_counter() - t0
+            time_counts["GaussCov"] += 1
+            errs_b["GaussCov"].append(frobenius_error(C_true, gaussCov_est, X.shape[1]))
+
+            
             t0 = time.perf_counter()
             trace_est = dp_trace_algo_2022(X, epsilon, 1e-5, k, rng=rng)
             time_totals["Trace2022"] += time.perf_counter() - t0
             time_counts["Trace2022"] += 1
             errs_b["Trace2022"].append(frobenius_error(C_true, trace_est, X.shape[1]))
-
-            t0 = time.perf_counter()
-            tail_est = dp_tail_algo_2022(X, epsilon, 1e-5, k, rng=rng)
-            time_totals["Tail2022"] += time.perf_counter() - t0
-            time_counts["Tail2022"] += 1
-            errs_b["Tail2022"].append(frobenius_error(C_true, tail_est, X.shape[1]))
 
             completed_runs += 1
 
